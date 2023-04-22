@@ -1,0 +1,33 @@
+{
+  "name": "@accessmap/web-access-map",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Web application para accessMap",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "lint": "eslint . --fix",
+    "preview": "vite preview",
+    "prettier": "prettier . --write"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.10.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.28",
+    "@types/react-dom": "^18.0.11",
+    "@vitejs/plugin-react": "^3.1.0",
+    "autoprefixer": "^10.4.14",
+    "postcss": "^8.4.22",
+    "prettier": "^2.8.7",
+    "tailwindcss": "^3.3.1",
+    "vite": "^4.2.0"
+  },
+  "lint-staged": {
+    "*.js": "eslint --cache --fix",
+    "*.{js,css,md}": "prettier --write"
+  }
+}
