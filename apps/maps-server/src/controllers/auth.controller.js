@@ -30,7 +30,7 @@ singUp = async (req, res) => {
   res.status(200).json({ token })
 }
 
-singIn = async (req, res) => {
+const singIn = async (req, res) => {
   const userFound = await User.findOne({ email: req.body.email }).populate(
     'roles'
   )
