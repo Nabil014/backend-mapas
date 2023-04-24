@@ -2,14 +2,20 @@ const express = require('express')
 const cookieParser = require('cookie-parser')
 const bodyParser = require('body-parser')
 const morgan = require('morgan')
-const routes = require('./routes/index.js')
+const routes = require('./src/routes/index')
+const { createRoles } = require('./src/libs/initialSetup')
 
 require('./db.js')
 
 const server = express()
-const cors = require('cors')
-server.use(express.json())
+createRoles()
 
+server.use(express.json())
+const cors = require('cors')
+
+server.get('/', (req, res) => {
+  res.send('Welcome to the accessMap API')
+})
 server.name = 'API'
 server.use(cors())
 server.use(bodyParser.urlencoded({ extended: true, limit: '50mb' }))
