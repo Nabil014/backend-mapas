@@ -25,7 +25,7 @@ const singUp = async (req, res) => {
   console.log(savedUser)
 
   const token = jwt.sign({ id: savedUser._id }, config.SECRET, {
-    expiresIn: 86400 // 24 horas
+    expiresIn: config.TOKEN_DURATION
   })
   res.status(200).json({ token })
 }
@@ -46,7 +46,7 @@ const singIn = async (req, res) => {
   }
 
   const token = jwt.sign({ id: userFound._id }, config.SECRET, {
-    expiresIn: 86400
+    expiresIn: config.TOKEN_DURATION
   })
 
   console.log(userFound)
