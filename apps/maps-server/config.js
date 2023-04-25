@@ -1,10 +1,14 @@
 const dotenv = require('dotenv')
 dotenv.config()
 
-const SECRET = process.env.SECRET
-const PORT = process.env.PORT || 3000
+const defaultPort = 3000
 
 module.exports = {
-  SECRET,
-  PORT
+  SECRET: process.env.SECRET,
+  PORT: process.env.PORT || defaultPort,
+  database: {
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    host: process.env.DB_HOST
+  }
 }
