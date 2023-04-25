@@ -3,14 +3,14 @@ const Role = require('../models/role')
 const jwt = require('jsonwebtoken')
 const config = require('../../config')
 
-singUp = async (req, res) => {
+const singUp = async (req, res) => {
   const { name, lastname, email, password, roles } = req.body
 
   const newUser = new User({
     name,
     lastname,
     email,
-    password: await User.encryptPassword(password),
+    password: await User.encryptPassword(password)
   })
 
   if (roles) {
@@ -25,7 +25,7 @@ singUp = async (req, res) => {
   console.log(savedUser)
 
   const token = jwt.sign({ id: savedUser._id }, config.SECRET, {
-    expiresIn: 86400, //24 horas
+    expiresIn: 86400 // 24 horas
   })
   res.status(200).json({ token })
 }
@@ -46,7 +46,7 @@ const singIn = async (req, res) => {
   }
 
   const token = jwt.sign({ id: userFound._id }, config.SECRET, {
-    expiresIn: 86400,
+    expiresIn: 86400
   })
 
   console.log(userFound)

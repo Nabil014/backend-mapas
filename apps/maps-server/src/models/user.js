@@ -14,13 +14,13 @@ const userSchema = new Schema(
     roles: [
       {
         ref: 'Role',
-        type: Schema.Types.ObjectId,
-      },
-    ],
+        type: Schema.Types.ObjectId
+      }
+    ]
   },
   {
     timestamps: true,
-    versionKey: false,
+    versionKey: false
   }
 )
 
