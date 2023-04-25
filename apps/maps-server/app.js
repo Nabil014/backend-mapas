@@ -1,6 +1,7 @@
 const express = require('express')
 const cookieParser = require('cookie-parser')
 const bodyParser = require('body-parser')
+const { configDocs: docs } = require('@accessmap/api-docs')
 const morgan = require('morgan')
 const routes = require('./src/routes/index')
 const { createRoles } = require('./src/libs/initialSetup')
@@ -34,6 +35,8 @@ server.use((req, res, next) => {
 })
 
 server.use('/', routes)
+
+server.use('/api-docs', docs)
 
 // Error catching endware.
 server.use((err, req, res, next) => {

@@ -1,0 +1,15 @@
+{
+  "name": "@accessmap/api-docs",
+  "version": "1.0.0",
+  "description": "Proyecto de swagger que guarda informacion acerca de la API disponible para la recuperacion de mapas",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "swagger-jsdoc": "6.2.8",
+    "swagger-ui-express": "4.6.2"
+  }
+}
