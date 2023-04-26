@@ -1,10 +1,10 @@
 const Comment = require('../models/coments')
 
-postComments = async (req, res) => {
+const postComments = async (req, res) => {
   const { comment } = req.body
   try {
     const newComment = new Comment({
-      comment,
+      comment
     })
 
     await newComment.save()

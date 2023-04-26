@@ -3,10 +3,10 @@ const Schema = mongoose.Schema
 
 const comentsSchema = new Schema(
   {
-    comment: { type: String, required: true },
+    comment: { type: String, required: true }
   },
   {
-    versionKey: false,
+    versionKey: false
   }
 )
 const model = mongoose.model('Comment', comentsSchema)
