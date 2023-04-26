@@ -36,7 +36,7 @@ server.use((req, res, next) => {
 
 server.use('/', routes)
 
-server.use('/api-docs', docs)
+server.use('/api-docs', docs(__dirname))
 
 // Error catching endware.
 server.use((err, req, res, next) => {

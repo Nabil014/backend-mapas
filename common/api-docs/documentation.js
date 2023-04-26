@@ -17,9 +17,10 @@ module.exports = {
     },
     servers: [
       {
-        url: 'http://localhost:3000'
+        url: 'http://localhost:3000',
+        description: 'URL utilizada durante el desarrollo del producto'
       }
     ]
   },
-  apis: ['./routes/*.js']
+  apis: []
 }
