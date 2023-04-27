@@ -3,6 +3,25 @@ const Role = require('../models/role')
 const jwt = require('jsonwebtoken')
 const config = require('../../config')
 
+/**
+ * @openapi
+ *  /api/auth/singup:
+ *    post:
+ *      tags:
+ *        - Authentication
+ *      summary: Crear un usuario
+ *      description: Crear un nuevo usuario en la aplicasion
+ *      requestBody:
+ *        description:
+ *        content:
+ *          application/json:
+ *            schema:
+ *              $ref: '#/components/schemas/CreateUserInput'
+ *          required: true
+ *      responses:
+ *        200:
+ *          description: El nuevo usuario fue creado exitosamente
+ */
 const singUp = async (req, res) => {
   const { name, lastname, email, password, roles } = req.body
 
@@ -30,6 +49,25 @@ const singUp = async (req, res) => {
   res.status(200).json({ token })
 }
 
+/**
+ * @openapi
+ *  /api/auth/singin:
+ *    post:
+ *      tags:
+ *        - Authentication
+ *      summary: logear un usuario
+ *      description: logear un usuario, un nuevo token sera entregado al usuario.
+ *      requestBody:
+ *        description:
+ *        content:
+ *          application/json:
+ *            schema:
+ *              $ref: '#/components/schemas/LoginUserInput'
+ *          required: true
+ *      responses:
+ *        200:
+ *          description: El nuevo usuario fue logeado exitosamente exitosamente
+ */
 const singIn = async (req, res) => {
   const userFound = await User.findOne({ email: req.body.email }).populate(
     'roles'
