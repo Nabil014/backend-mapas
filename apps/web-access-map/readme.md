@@ -4,7 +4,7 @@ Seguiremos la siguiente estructura
 
 ```javascript
 api
-  - 
+  -
 redux
   - store
   - action
@@ -13,7 +13,7 @@ pages
   - Login
   - Register
   - Layout
-  
+
 containers
   - Login
     <Button label="login">
@@ -29,9 +29,9 @@ components
   - Field
   - Menu
 utils/helpers
-  - 
+  -
 middleware
-  - 
+  -
 ```
 
 ### Terminologia, Glosario
@@ -39,3 +39,4 @@ middleware
 - Disenar: dibujar en figma, crear el disen~o.
 - Maquetar o Maquetacion: crear el `html` y el `css` utilizando un disen~o ya existente.
 - Codificar, Implementar, dar vida a la maqueta: pasar la maqueta a componentes de Javascript/React.
+- Grooming: Dividir una tarea en tareas mas pequenas.

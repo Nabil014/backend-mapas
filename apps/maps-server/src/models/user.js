@@ -3,6 +3,51 @@ const bcrypt = require('bcryptjs')
 
 const Schema = mongoose.Schema
 
+/**
+ * @openapi
+ * components:
+ *  schemas:
+ *    LoginUserInput:
+ *      type: object
+ *      required:
+ *        - email
+ *        - password
+ *      properties:
+ *        email:
+ *          type: string
+ *          default: juan.perez@example.com
+ *        password:
+ *          type: string
+ *          default: contrasena123
+ *    CreateUserInput:
+ *      type: object
+ *      required:
+ *        - name
+ *        - lastname
+ *        - email
+ *        - password
+ *      properties:
+ *        name:
+ *          type: string
+ *          default: Juan
+ *        lastname:
+ *          type: string
+ *          default: Perez
+ *        email:
+ *          type: string
+ *          default: juan.perez@example.com
+ *        password:
+ *          type: string
+ *          default: contrasena123
+ *        avatar:
+ *          type: string
+ *        disability:
+ *          type: array
+ *          items:
+ *            type: string
+ *        roles:
+ *          $ref: '#/components/schemas/Role'
+ */
 const userSchema = new Schema(
   {
     name: { type: String, required: true },

@@ -4,15 +4,18 @@
   "version": "1.0.0",
   "workspaces": [
     "./apps/*",
-    "./common/*"
+    "./common/*",
+    "./pocs/*"
   ],
   "scripts": {
     "be": "npm run dev -w @accessmap/maps-server",
     "fe": "npm run dev -w @accessmap/web-access-map",
+    "maps": "npm run -w @accessmap/pocs-maps",
     "fe:build": "npm run build -w @accessmap/web-access-map",
     "fe:preview": "npm run build -w @accessmap/web-access-map",
     "prepare": "husky install",
     "lint": "standard",
+    "lint:fix": "standard --fix",
     "prettier": "prettier . --write",
     "precommit": "lint-staged"
   },
@@ -28,9 +31,5 @@
   "lint-staged": {
     "*.js": "standard --fix",
     "*.{js,css,md}": "prettier --write"
-  },
-  "dependencies": {
-    "@reduxjs/toolkit": "^1.9.5",
-    "react-redux": "^8.0.5"
   }
 }

@@ -18,7 +18,6 @@ La aplicacion "AccessMap" es una plataforma web enfocada en la accesibilidad, qu
 - [ ] Crear un backend que procese la información de ubicaciones y accesibilidad, y que se comunique con las APIs de geolocalización y accesibilidad para obtener datos actualizados.
 - [ ] Considerar la accesibilidad a nivel de aplicación y a nivel de usabilidad de la misma
 
-
 ## Para los Desarrolladores
 
 ### Instalacion de los paquetes de dependencia
