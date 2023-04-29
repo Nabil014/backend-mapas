@@ -1,8 +1,5 @@
-const dotenv = require('dotenv')
 const server = require('./app')
-dotenv.config()
-
-const PORT = process.env.PORT || 3000
+const { PORT } = require('./config')
 
 server.get('/healthy', (_, res) => {
   res.status(200).send({ status: 'ok', message: 'simple healthy response' })

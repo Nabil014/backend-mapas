@@ -12,13 +12,21 @@
     "fe:build": "npm run build -w @accessmap/web-access-map",
     "fe:preview": "npm run build -w @accessmap/web-access-map",
     "prepare": "husky install",
-    "lint": "standard"
+    "lint": "standard",
+    "prettier": "prettier . --write",
+    "precommit": "lint-staged"
   },
   "devDependencies": {
     "husky": "8.0.3",
+    "lint-staged": "13.2.1",
+    "prettier": "2.8.7",
     "standard": "17.0.0"
   },
   "eslintConfig": {
     "extends": "./node_modules/standard/eslintrc.json"
+  },
+  "lint-staged": {
+    "*.js": "standard --fix",
+    "*.{js,css,md}": "prettier --write"
   }
 }
