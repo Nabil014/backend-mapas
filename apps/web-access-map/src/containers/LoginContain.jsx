@@ -34,7 +34,7 @@ export default function LoginContainer () {
                 className='bg-gray-50 rounded-lg text-lg ml-[-16.7%] w-[108.7%] md:-ml-[20%] md:p-2 lg:ml-[-10%] xl:ml-[-9%] 2xl:p-3 2xl:w-[80%] 2xl:ml-[7.8%]'
               />
               {errors.username?.type === 'required' && (<p className='text-sm text-red-600 -ml-[20%] md:ml-[-18%] md:text-lg xl:ml-[-7%] xl:text-lg 2xl:ml-[9%] 2xl:text-2xl'>Username is required</p>)}
-              {errors.username?.type === 'maxLength' && (<p className='text-sm text-red-600 -ml-[20%] md:ml-[-18%] md:text-lg xl:ml-[-7%] xl:text-lg 2xl:ml-[9%] 2xl:text-2xl'>Username must have at least 10 characteres</p>)}
+              {errors.username?.type === 'maxLength' && (<p className='text-sm text-red-600 -ml-[19.5%] md:ml-[-18%] md:text-lg xl:ml-[-7%] xl:text-lg 2xl:ml-[9%] 2xl:text-2xl'>Username must have at least 10 characteres</p>)}
             </div>
             <div className='mt-1'>
               <input
