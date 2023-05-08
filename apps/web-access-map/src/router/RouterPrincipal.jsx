@@ -1,12 +1,14 @@
 import React from 'react'
-import { AuthPage } from '../auth/pages/AuthPage'
 import { Navigate, Route, Routes } from 'react-router-dom'
+import { LoginPage } from '../pages/auth/LoginPage'
+import { RegisterPage } from '../pages/auth/RegisterPage'
 
 export const RouterPrincipal = () => {
   return (
     <>
       <Routes>
-        <Route path='/login' element={<AuthPage />} />
+        <Route path='/register' element={<RegisterPage />} />
+        <Route path='/login' element={<LoginPage />} />
 
         <Route path='/*' element={<Navigate to='/login' />} />
       </Routes>
