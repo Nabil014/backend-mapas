@@ -1,5 +1,6 @@
 import React from 'react'
 import FormRegisterContainer from './FormRegisterContainer'
+import { NavLink } from 'react-router-dom'
 
 export default function RegisterContainer () {
   return (
@@ -13,8 +14,11 @@ export default function RegisterContainer () {
           <FormRegisterContainer />
           <div className='flex gap-2 items-stretch mb-1 ml-[17%] md:ml-[31.5%]'>
             <p className='mt-2 ml-[9.5%] text-sky-500 font-semibold text-sm self-center sm:text-xl md:text-center md:-ml-[15%] lg:-ml-[10%] xl:-ml-[1%]'>Already have an account?</p>
-            {/* Redirección 👇 al login */}
-            <p className='mt-2 self-center text-sky-500 font-medium text-sm sm:text-xl md:text-center'>Log in</p>
+            <p className='mt-2 self-center text-sky-500 font-medium text-sm sm:text-xl md:text-center'>
+              <NavLink className=' text-blue-500' to='/login'>
+                Log In
+              </NavLink>
+            </p>
           </div>
         </section>
         <section className='bg-slate-200 w-full sm:w-1/2 hidden sm:hidden md:flex md:basis-1/2 md:border-2'>

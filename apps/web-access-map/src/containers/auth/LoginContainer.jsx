@@ -3,8 +3,12 @@ import { useForm } from 'react-hook-form'
 import authImage from '../../../public/img/authImage.jpg'
 import responsiveImage from '../../../public/img/responsiveImage.jpg'
 import ButtonLogin from '../../components/auth/ButtonLogin'
+import { NavLink } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import { LoginUser } from '../../redux/auth/thunks'
 
 export default function LoginContainer () {
+  const dispatch = useDispatch()
   const {
     register,
     formState: { errors },
@@ -12,7 +16,7 @@ export default function LoginContainer () {
   } = useForm()
 
   const onSubmit = (data) => {
-    console.log(data)
+    dispatch(LoginUser(data))
   }
 
   return (
@@ -28,7 +32,7 @@ export default function LoginContainer () {
                 type='text'
                 {...register('username', {
                   required: true,
-                  maxLength: 10
+                  maxLength: 30
                 })}
                 placeholder='Username'
                 autoFocus
@@ -48,7 +52,12 @@ export default function LoginContainer () {
               />
               {errors.password?.type === 'required' && (<p className='text-sm text-red-600 -ml-[17%] md:-ml-[10.2%] md:text-lg xl:-ml-[8%] xl:text-lg 2xl:ml-[9%] 2xl:text-2xl'>Password is required</p>)}
             </div>
-            <p className='font-medium text-gray-600 text-sm -ml-[19.3%] mt-2 sm:-ml-10 md:text-base md:-ml-[20%] md:mt-2 xl:text-base lg:-ml-[10%] xl:-ml-[8%] xl:mt-2 2xl:text-lg 2xl:ml-[8%] 2xl:mt-2'>Need an AccessMap account? Create an account</p>
+            <p className='font-medium text-gray-600 text-sm -ml-[19.3%] mt-2 sm:-ml-10 md:text-base md:-ml-[20%] md:mt-2 xl:text-base lg:-ml-[10%] xl:-ml-[8%] xl:mt-2 2xl:text-lg 2xl:ml-[8%] 2xl:mt-2'>
+              Need an AccessMap account?
+              <NavLink className=' text-blue-500' to='/register'>
+                Create Acount
+              </NavLink>
+            </p>
             <ButtonLogin />
           </form>
         </section>
