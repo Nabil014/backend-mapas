@@ -1,6 +1,19 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
+/**
+ * @openapi
+ * components:
+ *  schemas:
+ *    Role:
+ *      type: object
+ *      required:
+ *        - name
+ *      properties:
+ *        name:
+ *          type: string
+ *          default: admin
+ */
 const roleSchema = new Schema(
   {
     name: String

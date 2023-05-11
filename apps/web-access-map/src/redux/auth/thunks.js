@@ -1,45 +1,32 @@
 import apiMapas from '../../api/apiMapas'
-import {
-  loginError,
-  loginUser,
-  registerData,
-  registerError,
-  sesionStatus
-} from './AuthSlice'
-
+import { loginUser, sesionStatus } from './AuthSlice'
+/* global localStorage */
 export const RegisterUser = (datas) => {
   return async (dispatch) => {
     dispatch(sesionStatus())
-    datas.rol = 'VENTAS_ROL'
-    datas.correo = datas.email
-    delete datas.email
-    try {
-      const { data } = await apiMapas.post('/usuarios', datas)
-      dispatch(registerData(data.usuario))
-      console.log(data)
-    } catch (error) {
-      const { response } = error
-      const errores = response.data.errors
-      console.log(errores)
-      dispatch(registerError(errores))
-    }
+    const { data } = await apiMapas.post('/auth/singup', datas)
+    localStorage.setItem('token', data.token)
+    const tokensito = localStorage.getItem('token')
+    const [, payload] = tokensito.split('.')
+    const decodedPayload = atob(payload)
+    const datos = JSON.parse(decodedPayload)
+    const { id, name, lastname, email } = datos
+    dispatch(loginUser({ id, name, lastname, email }))
   }
 }
 
 export const LoginUser = (datas) => {
   return async (dispatch) => {
     dispatch(sesionStatus())
-    datas.correo = datas.username
+    datas.email = datas.username
     delete datas.username
-    console.log(datas)
-    try {
-      const { data } = await apiMapas.post('/auth/login', datas)
-      const { uid, name, lastname, username, correo } = data.usuario
-      dispatch(loginUser({ uid, name, lastname, username, correo }))
-    } catch (error) {
-      const { response } = error
-      const errores = response.data.msg
-      dispatch(loginError(errores))
-    }
+    const { data } = await apiMapas.post('/auth/singin', datas)
+    localStorage.setItem('token', data.token)
+    const tokensito = localStorage.getItem('token')
+    const [, payload] = tokensito.split('.')
+    const decodedPayload = atob(payload)
+    const datos = JSON.parse(decodedPayload)
+    const { id, name, lastname, email } = datos
+    dispatch(loginUser({ id, name, lastname, email }))
   }
 }

@@ -14,7 +14,6 @@ export default function FormRegisterContainer () {
 
   const onSubmit = (data) => {
     dispatch(RegisterUser(data))
-
   }
   return (
     <form onSubmit={handleSubmit(onSubmit)} className='sm:flex-col'>
