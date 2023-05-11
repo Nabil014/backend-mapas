@@ -1,8 +1,11 @@
 import React from 'react'
 import { useForm } from 'react-hook-form'
 import ButtonRegister from '../../components/auth/ButtonRegister'
+import { useDispatch } from 'react-redux'
+import { RegisterUser } from '../../redux/auth/thunks'
 
 export default function FormRegisterContainer () {
+  const dispatch = useDispatch()
   const {
     register,
     formState: { errors },
@@ -10,7 +13,7 @@ export default function FormRegisterContainer () {
   } = useForm()
 
   const onSubmit = (data) => {
-    console.log(data)
+    dispatch(RegisterUser(data))
   }
   return (
     <form onSubmit={handleSubmit(onSubmit)} className='sm:flex-col'>
