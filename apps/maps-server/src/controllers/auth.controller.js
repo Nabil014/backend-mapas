@@ -5,7 +5,7 @@ const config = require('../../config')
 
 /**
  * @openapi
- *  /api/auth/singup:
+ *  /api/auth/signup:
  *    post:
  *      tags:
  *        - Authentication
@@ -22,7 +22,7 @@ const config = require('../../config')
  *        200:
  *          description: El nuevo usuario fue creado exitosamente
  */
-const singUp = async (req, res) => {
+const signUp = async (req, res) => {
   const { name, lastname, email, password, roles } = req.body
 
   const newUser = new User({
@@ -60,7 +60,7 @@ const singUp = async (req, res) => {
 
 /**
  * @openapi
- *  /api/auth/singin:
+ *  /api/auth/signin:
  *    post:
  *      tags:
  *        - Authentication
@@ -77,7 +77,7 @@ const singUp = async (req, res) => {
  *        200:
  *          description: El nuevo usuario fue logeado exitosamente exitosamente
  */
-const singIn = async (req, res) => {
+const signIn = async (req, res) => {
   const userFound = await User.findOne({ email: req.body.email }).populate(
     'roles'
   )
@@ -109,4 +109,4 @@ const singIn = async (req, res) => {
   res.json({ token })
 }
 
-module.exports = { singIn, singUp }
+module.exports = { signIn, signUp }
