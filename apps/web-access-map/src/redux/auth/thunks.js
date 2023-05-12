@@ -1,5 +1,6 @@
 import apiMapas from '../../api/apiMapas'
-import { loginUser, sesionStatus } from './AuthSlice'
+import { TokenAcces } from '../../helper/TokenAcces'
+import { loginUser, logoutUser, sesionStatus } from './AuthSlice'
 /* global localStorage */
 export const RegisterUser = (datas) => {
   return async (dispatch) => {
@@ -7,10 +8,7 @@ export const RegisterUser = (datas) => {
     const { data } = await apiMapas.post('/auth/singup', datas)
     localStorage.setItem('token', data.token)
     const tokensito = localStorage.getItem('token')
-    const [, payload] = tokensito.split('.')
-    const decodedPayload = atob(payload)
-    const datos = JSON.parse(decodedPayload)
-    const { id, name, lastname, email } = datos
+    const { id, name, lastname, email } = TokenAcces(tokensito)
     dispatch(loginUser({ id, name, lastname, email }))
   }
 }
@@ -23,10 +21,21 @@ export const LoginUser = (datas) => {
     const { data } = await apiMapas.post('/auth/singin', datas)
     localStorage.setItem('token', data.token)
     const tokensito = localStorage.getItem('token')
-    const [, payload] = tokensito.split('.')
-    const decodedPayload = atob(payload)
-    const datos = JSON.parse(decodedPayload)
-    const { id, name, lastname, email } = datos
+    const { id, name, lastname, email } = TokenAcces(tokensito)
     dispatch(loginUser({ id, name, lastname, email }))
+  }
+}
+
+export const TokenAccess = (token) => {
+  return async (dispatch) => {
+    const { id, name, lastname, email } = TokenAcces(token)
+    dispatch(loginUser({ id, name, lastname, email }))
+  }
+}
+
+export const LogoutUser = () => {
+  return async (dispatch) => {
+    localStorage.removeItem('token')
+    dispatch(logoutUser())
   }
 }

@@ -15,7 +15,7 @@ export default function RegisterContainer () {
           <div className='flex gap-2 items-stretch mb-1 ml-[17%] md:ml-[31.5%]'>
             <p className='mt-2 ml-[9.5%] text-sky-500 font-semibold text-sm self-center sm:text-xl md:text-center md:-ml-[15%] lg:-ml-[10%] xl:-ml-[1%]'>Already have an account?</p>
             <p className='mt-2 self-center text-sky-500 font-medium text-sm sm:text-xl md:text-center'>
-              <NavLink className=' text-blue-500' to='/login'>
+              <NavLink className=' text-blue-500' to='/auth/login'>
                 Log In
               </NavLink>
             </p>

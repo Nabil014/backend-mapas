@@ -33,6 +33,11 @@ export const AuthSlice = createSlice({
       state.status = 'not-authenticated'
       state.data = null
       state.error = payload
+    },
+    logoutUser: (state, { payload }) => {
+      state.status = 'not-authenticated'
+      state.data = null
+      state.error = null
     }
   }
 })
@@ -43,5 +48,6 @@ export const {
   registerData,
   registerError,
   loginUser,
-  loginError
+  loginError,
+  logoutUser
 } = AuthSlice.actions
