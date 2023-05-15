@@ -1,3 +1,4 @@
+/* global localStorage */
 import React, { useEffect } from 'react'
 import { Route, Routes } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
@@ -7,7 +8,6 @@ import { RouterAuth } from './RouterAuth'
 import { RouterMain } from './RouterMain'
 import { RouterPublic } from './RouterPublic'
 import { RouterPrivate } from './RouterPrivate'
-/* global localStorage */
 
 export const RouterPrincipal = () => {
   const { status } = useSelector((state) => state.auth)

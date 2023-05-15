@@ -1,7 +1,8 @@
+/* global localStorage */
 import apiMapas from '../../api/apiMapas'
 import { TokenAcces } from '../../helper/TokenAcces'
 import { loginUser, logoutUser, sesionStatus } from './AuthSlice'
-/* global localStorage */
+
 export const RegisterUser = (datas) => {
   return async (dispatch) => {
     dispatch(sesionStatus())
