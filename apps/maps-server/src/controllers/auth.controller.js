@@ -43,9 +43,18 @@ const signUp = async (req, res) => {
   const savedUser = await newUser.save()
   console.log(savedUser)
 
-  const token = jwt.sign({ id: savedUser._id }, config.SECRET, {
-    expiresIn: config.TOKEN_DURATION
-  })
+  const token = jwt.sign(
+    {
+      id: savedUser._id,
+      name: savedUser.name,
+      lastname: savedUser.lastname,
+      email: savedUser.email
+    },
+    config.SECRET,
+    {
+      expiresIn: config.TOKEN_DURATION
+    }
+  )
   res.status(200).json({ token })
 }
 
@@ -83,9 +92,18 @@ const signIn = async (req, res) => {
     return res.status(401).json({ token: null, message: 'Invalid Password' })
   }
 
-  const token = jwt.sign({ id: userFound._id }, config.SECRET, {
-    expiresIn: config.TOKEN_DURATION
-  })
+  const token = jwt.sign(
+    {
+      id: userFound._id,
+      name: userFound.name,
+      lastname: userFound.lastname,
+      email: userFound.email
+    },
+    config.SECRET,
+    {
+      expiresIn: config.TOKEN_DURATION
+    }
+  )
 
   console.log(userFound)
   res.json({ token })

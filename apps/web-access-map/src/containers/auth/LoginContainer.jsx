@@ -54,7 +54,7 @@ export default function LoginContainer () {
             </div>
             <p className='font-medium text-gray-600 text-sm -ml-[19.3%] mt-2 sm:-ml-10 md:text-base md:-ml-[20%] md:mt-2 xl:text-base lg:-ml-[10%] xl:-ml-[8%] xl:mt-2 2xl:text-lg 2xl:ml-[8%] 2xl:mt-2'>
               Need an AccessMap account?
-              <NavLink className=' text-blue-500' to='/register'>
+              <NavLink className=' text-blue-500' to='/auth/register'>
                 Create Acount
               </NavLink>
             </p>

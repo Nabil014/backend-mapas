@@ -3,6 +3,7 @@ import { GoogleMapsProvider } from '@ubilabs/google-maps-react-hooks'
 import { MarkerClusterer } from '@googlemaps/markerclusterer'
 import SuperClusterAlgorithm from './superClusterAlgorithm'
 import trees from './trees'
+/* global google */
 
 const mapOptions = {
   zoom: 12,

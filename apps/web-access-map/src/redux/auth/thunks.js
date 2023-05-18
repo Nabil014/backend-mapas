@@ -1,46 +1,42 @@
+/* global localStorage */
 import apiMapas from '../../api/apiMapas'
-import {
-  loginError,
-  loginUser,
-  registerData,
-  registerError,
-  sesionStatus
-} from './AuthSlice'
+import { TokenAcces } from '../../helper/TokenAcces'
+import { loginUser, logoutUser, sesionStatus } from './AuthSlice'
 
 export const RegisterUser = (datas) => {
   return async (dispatch) => {
     dispatch(sesionStatus())
-    datas.rol = 'VENTAS_ROL'
-    datas.correo = datas.email
-    delete datas.email
-    try {
-      const { data } = await apiMapas.post('/usuarios', datas)
-      dispatch(registerData(data.usuario))
-      console.log(data)
-    } catch (error) {
-      const { response } = error
-      const errores = response.data.errors
-      console.log(errores)
-      dispatch(registerError(errores))
-    }
+    const { data } = await apiMapas.post('/auth/singup', datas)
+    localStorage.setItem('token', data.token)
+    const tokensito = localStorage.getItem('token')
+    const { id, name, lastname, email } = TokenAcces(tokensito)
+    dispatch(loginUser({ id, name, lastname, email }))
   }
 }
 
 export const LoginUser = (datas) => {
   return async (dispatch) => {
     dispatch(sesionStatus())
-    datas.correo = datas.username
+    datas.email = datas.username
     delete datas.username
-    console.log(datas)
-    try {
-      const { data } = await apiMapas.post('/api/auth/signin', datas)
-      const { uid, name, lastname, username, correo } = data.usuario
-      /* localStorage.setItem('token', data.token) */
-      dispatch(loginUser({ uid, name, lastname, username, correo }))
-    } catch (error) {
-      const { response } = error
-      const errores = response.data.msg
-      dispatch(loginError(errores))
-    }
+    const { data } = await apiMapas.post('/auth/singin', datas)
+    localStorage.setItem('token', data.token)
+    const tokensito = localStorage.getItem('token')
+    const { id, name, lastname, email } = TokenAcces(tokensito)
+    dispatch(loginUser({ id, name, lastname, email }))
+  }
+}
+
+export const TokenAccess = (token) => {
+  return async (dispatch) => {
+    const { id, name, lastname, email } = TokenAcces(token)
+    dispatch(loginUser({ id, name, lastname, email }))
+  }
+}
+
+export const LogoutUser = () => {
+  return async (dispatch) => {
+    localStorage.removeItem('token')
+    dispatch(logoutUser())
   }
 }
