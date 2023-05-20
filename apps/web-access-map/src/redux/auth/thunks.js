@@ -6,7 +6,7 @@ import { loginUser, logoutUser, sesionStatus } from './AuthSlice'
 export const RegisterUser = (datas) => {
   return async (dispatch) => {
     dispatch(sesionStatus())
-    const { data } = await apiMapas.post('/auth/singup', datas)
+    const { data } = await apiMapas.post('/auth/signup', datas)
     localStorage.setItem('token', data.token)
     const tokensito = localStorage.getItem('token')
     const { id, name, lastname, email } = TokenAcces(tokensito)
